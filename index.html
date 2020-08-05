@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SkriptUtils</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="converter.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="mt-5">
+            <div class="card">
+                <div class="card-header">
+                    Votre code TuSKe
+                </div>
+                <div class="card-body">
+                    <textarea class="form-control" id="input" rows="10"></textarea>
+                    <br />
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-primary" onclick="convert()">
+                                Transformer mon code
+                            </button>
+                            <div class="ml-3 form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="tabulations" value="option1">
+                                <label class="form-check-label" for="tabulations">J'utilise des tabulations</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    Votre code skript-gui
+                </div>
+                <div class="card-body">
+                    <textarea class="mb-4 form-control" id="output" rows="10" readonly></textarea>
+                    <div class="alert alert-danger" role="alert" id="error" hidden>
+                        Un problème est survenu lors de la conversion de votre code ; assurez-vous qu'il soit correct et réessayez.
+                    </div>
+                    <div class="alert alert-success" role="alert" id="success" hidden>
+                        Votre code a été converti avec succès. Si vous rencontrez un problème avec celui-ci, n'hésitez pas à ouvrir une issue.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer font-small">
+        <div class="footer-copyright text-center py-3">
+            © 2020 <a href="https://github.com/Romitou">Romitou</a>
+        </div>
+    </footer>
+</body>
+</html>

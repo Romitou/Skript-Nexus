@@ -28,7 +28,7 @@ async function parse() {
             line = line.replace(/to (do)? nothing/gim, '');
             line = line.replace(/(make|format|create)( a)? gui slot/gim, 'make gui slot');
             line = line.replace(/ to close( then)?/gim, ':\n' + indentation + softIndent.repeat(2) + 'close ' + player[0] + '\'s inventory');
-            line = line.replace(/(run|exec|execute) (function)?/gim, ':\n' + indentation + softIndent.repeat(2));
+            line = line.replace(/ to (run|exec|execute) (function)?/gim, ':\n' + indentation + softIndent.repeat(2));
             line = softIndent + line;
         } else if (guiSection) {
             line = softIndent + line;

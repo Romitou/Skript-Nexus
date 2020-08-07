@@ -7,7 +7,7 @@ async function parse() {
     const code = document.getElementById('input').value.split('\n');
     const softIndent = document.getElementById('tabulations').checked ? '\t' : '    ';
 
-    let player;
+    let player = '';
     let output = [];
     let indentation = '';
     let guiSection = false;

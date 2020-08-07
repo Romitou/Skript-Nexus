@@ -20,8 +20,8 @@ async function parse() {
         } else if (/open virtual/gim.test(line)) {
             player = /(player|executor|victim|attacker|{.*?})/gim.exec(line);
             line = line.replace(/ (of|to) (player|executor|victim|attacker|{.*?})/gim, '');
-            line = line.replace(/open virtual/gim, 'create a gui with virtual') + ':';
             line = line.replace(/virtual .+/gim, 'virtual ' + line.match(/virtual .+/gim)[0].split(' ')[1] + ' inventory');
+            line = line.replace(/open virtual/gim, 'create a gui with virtual') + ':';
             indentation = line.match(/\s+/g)[0];
             guiSection = true;
         } else if (/(make|format|create)( a)? gui slot/gim.test(line)) {

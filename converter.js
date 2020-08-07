@@ -21,6 +21,7 @@ async function parse() {
             player = /(player|executor|victim|attacker|{.*?})/gim.exec(line);
             line = line.replace(/ (of|to) (player|executor|victim|attacker|{.*?})/gim, '');
             line = line.replace(/open virtual/gim, 'create a gui with virtual') + ':';
+            line = line.replace(/virtual .+/gim, 'virtual ' + line.match(/virtual .+/gim)[0].split(' ')[1] + ' inventory');
             indentation = line.match(/\s+/g)[0];
             guiSection = true;
         } else if (/(make|format|create)( a)? gui slot/gim.test(line)) {
@@ -47,8 +48,8 @@ async function convert() {
     try {
         document.getElementById('output').value = await parse();
         success.hidden = false;
-    } catch (ignore) {
-        console.log(ignore)
+    } catch (err) {
+        console.error(err);
         error.hidden = false;
     }
 }

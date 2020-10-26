@@ -37,9 +37,10 @@ async function parse() {
             line = line.replace(/ (to )?(run|exec|execute)( function)? /gim, ':\n' + indentation + softIndent.repeat(2));
             line = line.replace(/ (to )?(run|exec|execute):/gim, ':' + indentation + softIndent.repeat(2));
             line = line.replace(/ to close( then)?(:)?/gim, ':\n' + indentation + softIndent.repeat(2) + 'close ' + player + '\'s inventory');
-            const match = line.match(/(player|executor|victim|attacker|console|{.*?}) command/gim)[0]?.split(' ');
-            match?.splice(1, 0, 'execute');
-            line = line.replace(/(player|executor|victim|attacker|console|{.*?}) command/, 'make ' + match.join(' '));
+            const match = line.match(/(player|executor|victim|attacker|console|{.*?}) command/gim)
+            if (match)
+                match[0].split(' ').splice(1, 0, 'execute');
+            line = line.replace(/(player|executor|victim|attacker|console|{.*?}) command/, 'make ' + match?.join(' '));
             line = softIndent + line;
         } else if (guiSection) {
             line = softIndent + line;

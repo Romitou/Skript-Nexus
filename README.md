@@ -1,5 +1,5 @@
-# SkriptUtils
-🧪 Several utilities dedicated to Skript.
+# Skript Nexus
+🧪 Various useful tools to develop with Skript.
 
 ### 1. GUI converter
 The first project is to turn a GUI TuSKe into a GUI skript-gui easily at the touch of a button.

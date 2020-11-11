@@ -39,4 +39,10 @@ jobs:
         run: yarn run generate
 
       - name: Deploy to GitHub Pages
-        run: yarn run deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist
+          CLEAN: true
+

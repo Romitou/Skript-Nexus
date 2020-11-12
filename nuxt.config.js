@@ -1,6 +1,9 @@
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
+  router: {
+    base: '/skript-nexus'
+  },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -17,7 +20,8 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    './assets/css/main.scss'
+    './assets/css/bulma.scss',
+    './assets/css/custom.scss'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -41,9 +45,5 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-  },
-
-  router: {
-    base: '/skript-nexus/'
   }
 };

@@ -2,18 +2,18 @@
   <div>
     <b-navbar>
       <template slot="brand">
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">
+        <b-navbar-item to="/" tag="nuxt-link">
           <img
-            src="../assets/img/logo.png"
-            alt="Lightweight UI components for Vue.js based on Bulma"
+            src="https://github.com/Romitou/SkriptUtils/raw/v2/assets/img/logo.png"
+            alt=""
           >
         </b-navbar-item>
       </template>
       <template slot="start">
-        <b-navbar-item href="/" link nuxt>
+        <b-navbar-item tag="nuxt-link" to="/">
           Home
         </b-navbar-item>
-        <b-navbar-item href="/gui-converter" link nuxt>
+        <b-navbar-item tag="nuxt-link" to="gui-converter">
           GUI Converter
         </b-navbar-item>
       </template>

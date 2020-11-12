@@ -15,7 +15,7 @@
     <section class="section">
       <div class="container">
         <b-field
-          label="Your TuSKe code"
+          :label="'Your ' + (isConverted ? 'skript-gui' : 'TuSKe') + ' code'"
         >
           <b-input v-model="code" type="textarea" rows="10" :readonly="isConverted" />
         </b-field>

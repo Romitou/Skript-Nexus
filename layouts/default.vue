@@ -4,7 +4,7 @@
       <template slot="brand">
         <b-navbar-item to="/" tag="nuxt-link">
           <img
-            src="https://github.com/Romitou/SkriptUtils/raw/v2/assets/img/logo.png"
+            src="https://github.com/Romitou/SkriptUtils/raw/master/assets/img/logo.png"
             alt=""
           >
         </b-navbar-item>

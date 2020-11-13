@@ -14,6 +14,7 @@ export async function parse (input, isUsingTab) {
   let indentation = '';
   let guiSection = false;
   const executorRegex = new RegExp(/(player|executor|victim|attacker|{.*?})/, 'gim');
+  const commandRegex = new RegExp(/(player|executor|victim|attacker|console|{.*?}) command/, 'gim');
   const ofExecutorRegex = new RegExp(/ (of|to) (player|executor|victim|attacker|{.*?})/, 'gim');
 
   code.push(''); // Adding a new blank line to avoid errors with GUI section.
@@ -45,12 +46,13 @@ export async function parse (input, isUsingTab) {
       }
       line = line.replace(/ (to )?(run|exec|execute):/gim, ':' + indentation + softIndent.repeat(2));
       line = line.replace(/ to close( then)?(:)?/gim, ':\n' + indentation + softIndent.repeat(2) + 'close ' + player[0] + '\'s inventory');
-      line = line.replace(executorRegex, 'make $1 execute');
+      line = line.replace(commandRegex, 'make $1 execute');
       line = softIndent + line;
     } else if (guiSection) {
       line = softIndent + line;
     }
     output.push(line);
   }
+  output.pop(); // Remove the blank line added at the beginning.
   return output.join('\n');
 }

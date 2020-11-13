@@ -3,11 +3,10 @@ name: Node CI
 on:
   push:
     branches:
-      - main
-      - v2
+      - master
 
 jobs:
-  ci:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:

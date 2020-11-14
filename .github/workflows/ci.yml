@@ -10,34 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: ⬇️ Checkout
         uses: actions/checkout@master
 
-      - name: Setup node env
+      - name: ⚙️ Setup Node environment
         uses: actions/setup-node@v2.1.2
         with:
           node-version: 14
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache node modules
+      - name: 📦 Cache Node modules
         uses: actions/cache@v2
         id: yarn-cache
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ./node_modules/
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-modules-
 
-      - name: Install dependencies
+      - name: ➕ Install Node modules
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: Generate static project
+      - name: 🔨 Generate static project
         run: yarn run generate
 
-      - name: Deploy to GitHub Pages
+      - name: 🚀 Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
@@ -48,29 +45,55 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: ⬇️ Checkout
         uses: actions/checkout@master
 
-      - name: Setup node env
+      - name: ⚙️ Setup Node environment
         uses: actions/setup-node@v2.1.2
         with:
           node-version: 14
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache node modules
+      - name: 📦 Cache Node modules
         uses: actions/cache@v2
         id: yarn-cache
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ./node_modules/
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-modules-
 
-      - name: Install dependencies
+      - name: ➕ Install Node modules
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: Run tests
+      - name: ✅ Run tests
         run: yarn test
+
+  
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@master
+
+      - name: ⚙️ Setup Node environment
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 14
+
+      - name: 📦 Cache Node modules
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ./node_modules/
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: ➕ Install Node modules
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn
+
+      - name: 🚨 Run linter
+        run: yarn lint
